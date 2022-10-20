@@ -23,10 +23,6 @@ env:
   SERVICE: webhooks-client
   IMAGE: webhooks.client
 
-permissions:    
-  id-token: write
-  contents: read 
-
 jobs:
 
   BuildContainersForPR_Linux:

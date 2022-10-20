@@ -20,9 +20,6 @@ inputs:
   registry_host:
     description: "Image registry host e.g. myacr.azureacr.io"
     required: true
-  chart:
-    description: "Chart name"
-    required: true
   chart_root:
     description: "Root folder of chart"
     required: true
@@ -55,7 +52,7 @@ runs:
   - name: Deploy Chart
     shell: bash
     run: |
-      ./deploy-chart.sh -c ${{ inputs.chart }} --dns aks --aks-name ${{ inputs.cluster_name }} --aks-rg ${{ inputs.resource_group }} -r ${{ inputs.registry_host }} -t $TAG --namespace ${{ inputs.namespace }} --use-mesh false
+      ./deploy-all.sh --dns aks --aks-name ${{ inputs.cluster_name }} --aks-rg ${{ inputs.resource_group }} -r ${{ inputs.registry_host }} -t $TAG --namespace ${{ inputs.namespace }} --acr-connected
     env:
       TAG: ${{ env.BRANCH }}
     working-directory: ${{ inputs.chart_root }}
