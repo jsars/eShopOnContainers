@@ -27,7 +27,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-  - uses: azure/actions/login@v1
+  - uses: azure/login@v1
     with:
       creds: ${{ inputs.azure_credentials }}
 
