@@ -239,9 +239,6 @@ if [[ !$skip_infrastructure ]]; then
   done  
 fi
 
-
-if [[ $use_custom_registry ]] || [[ $acr_connected ]]; then
-  if [[ -z $acr_connected ]]; then
 for chart in "${charts[@]}"
 do
     echo "Installing: $chart"
