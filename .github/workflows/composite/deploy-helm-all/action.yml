@@ -53,7 +53,7 @@ runs:
     shell: bash
     run: |
       chmod +x deploy-all.sh 
-      ./deploy-all.sh --dns aks --aks-name ${{ inputs.cluster_name }} --aks-rg ${{ inputs.resource_group }} -r ${{ inputs.registry_host }} -t $TAG --namespace ${{ inputs.namespace }} --acr-connected
+      ./deploy-all.sh --dns aks --aks-name ${{ inputs.cluster_name }} --aks-rg ${{ inputs.resource_group }} -r ${{ inputs.registry_host }} -t $TAG --namespace ${{ inputs.namespace }} --use-mesh false
     env:
       TAG: ${{ env.BRANCH }}
     working-directory: ${{ inputs.chart_root }}

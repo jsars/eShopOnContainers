@@ -55,7 +55,7 @@ runs:
   - name: Deploy Chart
     shell: bash
     run: |
-      ./deploy-chart.sh -c ${{ inputs.chart }} --dns aks --aks-name ${{ inputs.cluster_name }} --aks-rg ${{ inputs.resource_group }} -r ${{ inputs.registry_host }} -t $TAG --namespace ${{ inputs.namespace }} --use-mesh false
+      ./deploy-chart.sh -c ${{ inputs.chart }} --dns aks --aks-name ${{ inputs.cluster_name }} --aks-rg ${{ inputs.resource_group }} -r ${{ inputs.registry_host }} -t $TAG --namespace ${{ inputs.namespace }} --acr-connected
     env:
       TAG: ${{ env.BRANCH }}
     working-directory: ${{ inputs.chart_root }}
