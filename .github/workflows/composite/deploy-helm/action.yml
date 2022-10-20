@@ -39,7 +39,7 @@ runs:
       tenant-id: ${{ inputs.azure_tenant_id }}
       subscription-id: ${{ inputs.azure_subscription_id }}
 
-  - uses: azure/aks-set-context@v1
+  - uses: azure/aks-set-context@v3
     name: Set AKS context
     with:
       cluster-name: ${{ inputs.cluster_name }}
