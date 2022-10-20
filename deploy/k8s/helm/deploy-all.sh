@@ -242,10 +242,8 @@ fi
 for chart in "${charts[@]}"
 do
     echo "Installing: $chart"
-    if [[ $use_custom_registry ]] || [[ $acr_connected ]]; then
-      if [[ -z $acr_connected ]]; then    
-        helm install "$app_name-$chart" --namespace $namespace --set "ingress.hosts={$dns}" --set inf.registry.server=$container_registry --set inf.registry.login=$docker_username --set inf.registry.pwd=$docker_password --set inf.registry.secretName=eshop-docker-scret --values app.yaml --values inf.yaml --values $ingress_values_file --values $ingressMeshAnnotationsFile  --set app.name=$app_name --set inf.k8s.dns=$dns --set image.tag=$image_tag --set image.pullPolicy=$imagePullPolicy $chart --set inf.mesh.enabled=$use_mesh
-      fi    
+    if [[ $use_custom_registry ]]; then  
+      helm install "$app_name-$chart" --namespace $namespace --set "ingress.hosts={$dns}" --set inf.registry.server=$container_registry --set inf.registry.login=$docker_username --set inf.registry.pwd=$docker_password --set inf.registry.secretName=eshop-docker-scret --values app.yaml --values inf.yaml --values $ingress_values_file --values $ingressMeshAnnotationsFile  --set app.name=$app_name --set inf.k8s.dns=$dns --set image.tag=$image_tag --set image.pullPolicy=$imagePullPolicy $chart --set inf.mesh.enabled=$use_mesh    
     elif [[ $chart != "eshop-common" ]]; then  # eshop-common is ignored when no secret must be deployed      
       helm install "$app_name-$chart" --namespace $namespace --set "ingress.hosts={$dns}" --values app.yaml --values inf.yaml --values $ingress_values_file --values $ingressMeshAnnotationsFile --set app.name=$app_name --set inf.k8s.dns=$dns --set image.tag=$image_tag --set image.pullPolicy=$imagePullPolicy $chart --set inf.mesh.enabled=$use_mesh
     fi
