@@ -35,5 +35,7 @@ jobs:
           cluster_name: ${{ secrets.CLUSTER_NAME }}
           resource_group: ${{ secrets.RESOURCE_GROUP }}
           registry_host: ${{ secrets.REGISTRY_HOST }}
+          registry_username: ${{ secrets.USERNAME }}
+          registry_password: ${{ secrets.PASSWORD }}
           chart_root: ${{ env.CHART_ROOT }}
           namespace: ${{ env.NAMESPACE }}
