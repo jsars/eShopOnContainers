@@ -1,10 +1,6 @@
 name: "Deploy Helm to AKS"
 description: "Deploys a helm chart to AKS"
 
-permissions:    
-  id-token: write
-  contents: read
-
 inputs:
   azure_client_id:
     description: "Client Id of the Service Principal"
